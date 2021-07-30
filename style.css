@@ -2,6 +2,37 @@
   box-sizing: border-box;
 }
 
+:root {
+  background-color: rgb(26, 24, 24);
+  color: rgba(226, 40, 40, 0.801);
+  font-size: 1rem;
+  text-align: center;
+}
+/***HEADER AND INSTRUCTIONS***/
+h1 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+h6 {
+  font-size: 1rem;
+}
+/***INPUT AND BUTTON***/
+input {
+  border: 1px solid white;
+  background-color: grey;
+  color: white;
+}
+
+button {
+  color: white;
+  background-color: red;
+  border-radius: 30px;
+}
+/***MESSAGE CONTAINER***/
+
+
 .hidden {
   display: none;
 }
+

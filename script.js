@@ -1,4 +1,3 @@
-
 /* 
    Welcome to the Higher-Lower Game Project. 
 
@@ -40,6 +39,9 @@ let remainingGuesses = -1;
 
 */
 function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 
@@ -53,23 +55,54 @@ function getRandomIntInclusive(min, max) {
 
 */
 function setupNewGame() {
+  let magicNumber = getRandomIntInclusive(0, 100);
+  let remainingGuesses = showRemainingGuesses(5);
+  hideAllMessages();
 }
 
 // Handles when the user makes a new guess.
 function handleGuess() {
   // Check if remaining guesses is -1 and setup a new game if so.
-
+  if(remainingGuesses == -1)
+  {
+    setupNewGame();
+  }
   // Check if the user has any remaining guesses and return if not.
-
+  let remainingGuesses = document.getElementById('remaining-guesses').value;
+  if(remainingGuesses == 0)
+  {
+    return;
+  }
   // Retreive the user's newest guess.
-
+  var input = getGuessInput();
   // Check if the user has won. We should show a message, set remaining guesses to 0, and return from this function.
-  
+  let magicNumber = getRandomIntInclusive(0, 100);
+  if(input == magicNumber)
+  {
+    showMessage(win-message);
+    remainingGuesses = 0;
+    return; 
+  }  
   // Check if the guess is higher or lower and show appropriate message.
-
-  // The user has used a guess, decrement remainin guesses and show the new value.
-
+  if(input > magicNumber)
+  {
+    showMessage(lower-message);
+  }
+  else if(input < magicNumber)
+  {
+    showMessage(higher-message);
+  }
+  // The user has used a guess, decrement remaining guesses and show the new value.
+  for(let i = 1; i <= remainingGuesses; i++)
+  {
+    remainingGuesses--;
+    showRemainingGuesses(remainingGuesses);
+  }
   // If the remaining guesses is 0, then the user has lost and that message should be shown.
+  if(remainingGuesses == 0)
+  {
+    showMessage(lose-message);
+  }
 }
 
 
@@ -82,4 +115,6 @@ function handleGuess() {
 
 */
 function handlePlayAgain() {
+  setupNewGame();
+  setGuessInput("");
 }
