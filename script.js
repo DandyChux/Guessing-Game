@@ -55,8 +55,8 @@ function getRandomIntInclusive(min, max) {
 
 */
 function setupNewGame() {
-  let magicNumber = getRandomIntInclusive(0, 100);
-  let remainingGuesses = showRemainingGuesses(5);
+  magicNumber = getRandomIntInclusive(0, 100);
+  remainingGuesses = showRemainingGuesses(5);
   hideAllMessages();
 }
 
@@ -77,12 +77,15 @@ function handleGuess() {
   var input = getGuessInput();
   // Check if the user has won. We should show a message, set remaining guesses to 0, and return from this function.
   let magicNumber = getRandomIntInclusive(0, 100);
-  if(input == magicNumber)
+  for(let i = 0; i <= 100; i++)
   {
-    showMessage(win-message);
-    remainingGuesses = 0;
-    return; 
-  }  
+    if (i = 100) {
+      showMessage('win-Message');
+      remainingGuesses = 0;
+      return;
+    }
+    return;
+  }
   // Check if the guess is higher or lower and show appropriate message.
   if(input > magicNumber)
   {
